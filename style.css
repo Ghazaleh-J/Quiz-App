@@ -5,27 +5,27 @@
     margin: 0;
 
 }
-.top a {
+nav a {
     text-decoration: none;
     color: #430f58;
 }
 
-.top p {
+nav p {
     float: right;
     
 }
 
-.Intro {
+main {
     padding: 50px;
     text-align: center;
 }
 
-.Intro p{
+main p{
     padding: 20px;
     font-weight: bold;
 }
 
-.Intro button {
+main button {
     margin: 20px;
     padding: 10px;
     border-radius: 15px;

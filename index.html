@@ -9,24 +9,31 @@
 </head>
 <body>
     <div class="container">
-        <div class="top">
+        <nav>
             <a class="btn" href="#">View Highscores</a>
             
             <p>Time: 00:00</p>
+        </nav>
 
-        </div>
-
-        <div class="Intro">
-            
-                <h1>Coding Quiz Challenge</h1>
-                
+        <main >
+            <section id="Intro" class="on">
+                <h1>Coding Quiz Challenge</h1>              
                 <p>Try to answer the following code-related questions within the time limit.
                    <br> Keep in mind that incorrect answers will penalize your score/time by <br> ten seconds!
                 </p>
-                <button>Start Quiz</button>
+                <button class="start">Start Quiz</button>
+            </section>
+            <section id="question-container" class="off">
+                <h1 id="question"></h1>
+                <div id="answers"></div>
+                
+            </section>
 
-        </div>
+            
+
+        </main>   
     </div>
-    
+
+    <script src="./script.js"></script>
 </body>
 </html>

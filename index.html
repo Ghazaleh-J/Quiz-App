@@ -12,24 +12,28 @@
         <nav>
             <a class="btn" href="#">View Highscores</a>
             
-            <p>Time: 00:00</p>
+            <p >Time: <span id="timer">60</span></p>
         </nav>
 
         <main >
-            <section id="Intro" class="on">
+            <section id="Intro">
                 <h1>Coding Quiz Challenge</h1>              
                 <p>Try to answer the following code-related questions within the time limit.
                    <br> Keep in mind that incorrect answers will penalize your score/time by <br> ten seconds!
                 </p>
                 <button id="start">Start Quiz</button>
             </section>
-            <section id="question-container" class="off">
-                <h1 id="question"></h1>
-                <div id="answers"></div>
-                
-            </section>
 
-            
+            <section id="question-container">
+                <h1 id="question"></h1>
+                <div id="answers">   
+                </div> 
+            </section>
+            <!-- <section id="lastScreen">
+                <h1 id="allDone"></h1> 
+                <p id="finalScore"></p>
+                <div id="initialInput"></div>
+            </section> -->
 
         </main>   
     </div>

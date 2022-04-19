@@ -14,20 +14,16 @@ var valueInput = document.querySelector("#inputValue")
 // variables
 var timeLeft = 60;
 var curentQuestionIndex = 0;
-var userChoice = [];
+var timer;
 
 
-// Start/Stop timer
 function counter (){
 
-    var timer = setInterval(function(){
         timeLeft--;
         timerr.innerText = timeLeft;
-          if (timeLeft === 0) {
-            clearInterval(timer);
+          if (timeLeft <= 0) {
             lastScreen();
         }
-    },1000);    
 }
 
 // switch to questions page & start timer by clicking start button
@@ -36,6 +32,7 @@ button.addEventListener("click", function(){
     intro.setAttribute("style", "display:none");
     showQuestion();
     counter();
+    timer = setInterval(counter, 1000);
 });
 
 // list of questions/answers & correct answer
@@ -65,9 +62,9 @@ var questionList = [ {
 // get questions with answers from the array
 function showQuestion () {
     if (curentQuestionIndex === questionList.length ) {
-       return lastScreen();
-       
+       return lastScreen();   
     }
+
     questionEl.innerText = questionList[curentQuestionIndex].qTitle;
     var choices = questionList[curentQuestionIndex].choices;
     answerContainer.innerHTML = ""
@@ -76,26 +73,24 @@ function showQuestion () {
         choiceButton.innerText = choices[i];
         answerContainer.append(choiceButton);
         choiceButton.addEventListener("click", function(event){
-            event.preventDefault();
-            correctAnswer(event.target.innerText);
+           var correctAnswer = (event.target.innerText);
+           if (correctAnswer !== questionList[curentQuestionIndex].correct) {
+               timeLeft-= 5;   // penalize time for wrong answers 
+           }
             curentQuestionIndex++;
             showQuestion();
-        } )
+        });
     }
 }
 
-// penalize time for wrong answers
-function correctAnswer (){
-    if (userChoice !== questionList[curentQuestionIndex].correct){
-        timeLeft-= 5;
-}
-};
+
 
 var butt = document.createElement("input");
 var submitButton = document.createElement("button");
 
 // function for what happen if the quiz ends (initial and score)  
 function lastScreen (){
+    clearInterval(timer);
     questionContainer.setAttribute("style", "display:none");
         done.innerText = ("All Done!");
         score.innerText = ("Your final score is " + timeLeft);  
@@ -110,7 +105,7 @@ function lastScreen (){
    
 // get the user's input (initial) and save it in the local storage
 function saveHighScore(){
-    var initial = butt.value;
+    var initial = butt.value.trim();
     if (initial !== ""){
       var highScore = JSON.parse(window.localStorage.getItem("highScore")) || [];
       var newScore = {
@@ -123,9 +118,3 @@ function saveHighScore(){
 
     }
 }
-
-function check (e) {
-    if (e.key === "Enter")
-    saveHighScore();
-}
-  

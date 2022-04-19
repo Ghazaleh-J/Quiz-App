@@ -92,17 +92,16 @@ function correctAnswer (){
 };
 
 var butt = document.createElement("input");
+var submitButton = document.createElement("button");
 
 // function for what happen if the quiz ends (initial and score)  
 function lastScreen (){
     questionContainer.setAttribute("style", "display:none");
         done.innerText = ("All Done!");
-        score.innerText = ("Your final score is " + timeLeft);
-        
+        score.innerText = ("Your final score is " + timeLeft);  
         initialInput.innerText = ("Enter initials: ");
         butt.setAttribute("type", "text");
         lastScreenContainer.append(butt);
-        var submitButton = document.createElement("button");
         submitButton.innerText = ("Submit");
         lastScreenContainer.append(submitButton);
         submitButton.onclick = saveHighScore;

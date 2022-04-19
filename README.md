@@ -7,5 +7,8 @@ By clicking on the "Start Quiz" button, the timer starts and the questions will 
 
 The deployed page on Github : https://ghazaleh-j.github.io/Homework-4/
 
+Site Preview:
+
+
 
 

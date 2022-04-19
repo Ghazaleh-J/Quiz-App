@@ -1,8 +1,8 @@
 function printHighscores() {
-    // either get scores from localstorage or set to empty array
+    // get scores from localstorage or set to empty array
     var highscore = JSON.parse(window.localStorage.getItem("highscore")) || [];
   
-    // sort highscores by score property in descending order
+    // sort highscore by score property in descending order
     highscore.sort(function(a, b) {
       return b.score - a.score;
     });
@@ -22,7 +22,7 @@ function printHighscores() {
     window.localStorage.removeItem("scores");
     window.location.reload();
   }
-  
+  // clear the page by clicking the clear button
   document.getElementById("clear").onclick = clearHighscores;
   
   // run function when page loads

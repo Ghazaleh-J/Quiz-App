@@ -1,3 +1,4 @@
+// Reference DOM Elements variables
 var intro = document.querySelector("#Intro");
 var questionContainer = document.querySelector("#question-container");
 var questionEl = document.querySelector("#question");
@@ -10,14 +11,13 @@ var inputt = document.querySelector("#initialInput");
 var valueInput = document.querySelector("#inputValue")
 
 
-
+// variables
 var timeLeft = 60;
 var curentQuestionIndex = 0;
 var userChoice = [];
 
 
-
-
+// Start/Stop timer
 function counter (){
 
     var timer = setInterval(function(){
@@ -27,23 +27,18 @@ function counter (){
             clearInterval(timer);
             lastScreen();
         }
-
     },1000);    
 }
 
-
-
-
+// switch to questions page & start timer by clicking start button
 var button = document.getElementById("start");
 button.addEventListener("click", function(){
     intro.setAttribute("style", "display:none");
     showQuestion();
     counter();
-    
 });
 
-
-
+// list of questions/answers & correct answer
 var questionList = [ {
     qTitle: "What is the capital of Netherlands?",
     choices: ["Arnhem", "Amsterdam", "Rotterdam", "Utrecht"],
@@ -67,12 +62,7 @@ var questionList = [ {
 }
 ];
 
-
-
-
-
-
-
+// get questions with answers from the array
 function showQuestion () {
     if (curentQuestionIndex === questionList.length ) {
        return lastScreen();
@@ -94,15 +84,14 @@ function showQuestion () {
     }
 }
 
-
+// penalize time for wrong answers
 function correctAnswer (){
     if (userChoice !== questionList[curentQuestionIndex].correct){
-        timeLeft-=5;
-    }
+        timeLeft-= 5;
+}
 };
 
- 
-
+var butt = document.createElement("input");
 
 // function for what happen if the quiz ends (initial and score)  
 function lastScreen (){
@@ -111,19 +100,18 @@ function lastScreen (){
         score.innerText = ("Your final score is " + timeLeft);
         
         initialInput.innerText = ("Enter initials: ");
-        var butt = document.createElement("input");
         butt.setAttribute("type", "text");
         lastScreenContainer.append(butt);
         var submitButton = document.createElement("button");
         submitButton.innerText = ("Submit");
         lastScreenContainer.append(submitButton);
         submitButton.onclick = saveHighScore;
+     
     }
    
-
-
+// get the user's input (initial) and save it in the local storage
 function saveHighScore(){
-    var initial = valueInput.value;
+    var initial = butt.value;
     if (initial !== ""){
       var highScore = JSON.parse(window.localStorage.getItem("highScore")) || [];
       var newScore = {
@@ -138,7 +126,7 @@ function saveHighScore(){
 }
 
 function check (e) {
-    if (e.key === "'Enter")
+    if (e.key === "Enter")
     saveHighScore();
 }
   

@@ -114,7 +114,7 @@ function saveHighScore(){
       };
       highScore.push(newScore);
       window.localStorage.setItem("highScore", JSON.stringify(highScore));
-      window.location.href = "highScore.html";
+      window.location.href = "highscore.html";
 
     }
 }

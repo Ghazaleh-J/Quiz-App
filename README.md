@@ -16,6 +16,9 @@ By clicking on the "Start Quiz" button, the timer starts and the questions will 
 * When the game is over
 * Then you can save your initials and your score
 
+## Link
+[Deployed Page](https://ghazaleh-j.github.io/Quiz-App/)
+
 ## Application Preview:
 ![alt text](/preview.png)
 
